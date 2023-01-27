@@ -130,8 +130,7 @@ export default class AniZero extends Connector {
         let videolink = Object.values(data)[0];
         //remove redirector
         if(videolink.match(/assistirFHD/)) {
-            let tmp = new URL(videolink);
-            videolink = decodeURI(tmp.searchParams.get("video"));
+            videolink = decodeURI((new URL(videolink)).searchParams.get("video"));
         }
         //if link is not already blogger
         if (!videolink.match(/blogger/)) {
